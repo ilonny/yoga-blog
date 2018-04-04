@@ -64,4 +64,8 @@ class Menu extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Menu::className(), ['parent_category' => 'id']);
     }
+
+    public function getSubs($id){
+        return Menu::find()->andWhere(['parent_category' => $id])->all();
+    }
 }

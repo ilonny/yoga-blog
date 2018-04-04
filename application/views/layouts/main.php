@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\Menu;
+use app\models\UserSocial;
 
 AppAsset::register($this);
 ?>
@@ -32,9 +33,11 @@ AppAsset::register($this);
             ->andWhere(['<>', 'id', 1])
             ->andWhere(['parent_category' => 1])
             ->all();
+            $social = UserSocial::find()->all();
         ?>
         <?= $this->render('menu.php', [
-            'cats' => $menu_cats
+            'cats' => $menu_cats,
+            'social' => $social,
         ]); ?>
         <?= $content ?>
     </div>

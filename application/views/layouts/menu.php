@@ -2,27 +2,27 @@
     <div class="content">
         <div class="left">
             <ul class="menu-hrefs">
-                <li class="li has-ul">
-                    <a href="#">Home</a>
-                    <ul>
-                        <li><a href="">Home inside</a></li>
-                        <li><a href="">Home inside 2</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Life style</a></li>
-                <li><a href="">Nature</a></li>
-                <li><a href="">Sports</a></li>
-                <li><a href="">Shop</a></li>
-                <li><a href="">View details</a></li>
-                <li><a href="">buy now</a></li>
+                <?php foreach ($cats as $key => $cat): ?>
+                <?php $subs = $cat->getSubs($cat->id); ?>
+                    <li <?= $subs ? 'class="li has-ul"' : ''; ?>>
+                        <a href=""><?= $cat->name; ?></a>
+                        <?php if ($subs): ?>
+                            <ul>
+                                <?php foreach ($subs as $sub): ?>
+                                    <li><a href=""><?= $sub->name; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
         <div class="right">
             <div class="social-wrap">
-                <a href="" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
-                <a href="" target="_blank" class="vk"><i class="fa fa-vk"></i></a>
-                <a href="" target="_blank" class="ph"><i class="fa fa-phone"></i></a>
-                <a href="" target="_blank" class="yt"><i class="fa fa-youtube"></i></a>
+                <?php foreach ($social as $key => $soc): ?>
+                    <?php $icon = $soc->getSocialIcon(); ?>
+                    <a href=<?= $soc->link; ?> target="_blank"><i class="<?= $icon; ?>"></i></a>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -39,21 +39,18 @@
 </div>
 <div class="mobile-menu">
     <ul class="menu-hrefs sm sm-mint" id="mobile-menu">
-        <li class="li has-ul">
-            <a href="#">Home</a>
-            <ul>
-                <li><a href="">Home inside</a></li>
-                <li><a href="">Home inside 2</a></li>
-                <?php for ($i=1; $i<=10; $i++): ?>
-                <li><a href="">Home inside 2</a></li>                
-                <?php endfor; ?>
-            </ul>
-        </li>
-        <li><a href="">Life style</a></li>
-        <li><a href="">Nature</a></li>
-        <li><a href="">Sports</a></li>
-        <li><a href="">Shop</a></li>
-        <li><a href="">View details</a></li>
-        <li><a href="">buy now</a></li>
+        <?php foreach ($cats as $key => $cat): ?>
+            <?php $subs = $cat->getSubs($cat->id); ?>
+            <li <?= $subs ? 'class="li has-ul"' : ''; ?>>
+                <a href=""><?= $cat->name; ?></a>
+                <?php if ($subs): ?>
+                    <ul>
+                        <?php foreach ($subs as $sub): ?>
+                            <li><a href=""><?= $sub->name; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
     </ul>
 </div>
