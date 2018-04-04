@@ -1,19 +1,13 @@
 $(document).ready(function()
 {
-    $(".reviews-form").on('submit', function(e){
-        e.preventDefault();
-        var formData = $(this).serialize();
-        $.ajax({
-            url: '/categories/save-review',
-            data: formData,
-            success: function (data) {
-                $(".help-block").html(data)
-            },
-            error: function(data){
-                console.log('возникла ошибка ', data)
-            }
-        })
+    $('#mobile-menu').smartmenus({
+        mainMenuSubOffsetX: -1,
+        subMenusSubOffsetX: 10,
+        subMenusSubOffsetY: 0
     });
-
-});/*КОНЕЦ*/
+    $(".hamburger").on('click', function () {
+        $(this).toggleClass('button-close')
+        $(".mobile-menu").toggleClass('active')
+    })
+});
     

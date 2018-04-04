@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Menu;
 
 AppAsset::register($this);
 ?>
@@ -26,6 +27,15 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
     <div id="container" class="container">
+        <?php
+            $menu_cats = Menu::find()
+            ->andWhere(['<>', 'id', 1])
+            ->andWhere(['parent_category' => 1])
+            ->all();
+        ?>
+        <?= $this->render('menu.php', [
+            'cats' => $menu_cats
+        ]); ?>
         <?= $content ?>
     </div>
 <?php $this->endBody() ?>

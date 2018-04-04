@@ -23,14 +23,17 @@ class AppAsset extends AssetBundle
         'css/font-awesome.css',
         'css/slick.css',
         'css/slick-theme.css',
+        'css/sm-core-css.css',
+        'css/sm-mint.css',
         'css/style.css',
     ];
     public $js = [
         // 'js/jQuery.js',
         'js/jquery.magnific-popup.min.js',
         'js/slick.min.js',
-        'http://api-maps.yandex.ru/2.1/?lang=ru_RU',
+        // 'http://api-maps.yandex.ru/2.1/?lang=ru_RU',
         'js/jquery.goldcarrot.js',
+        'js/jquery.smartmenus.min.js',
         'js/java.js',
     ];
     public $depends = [

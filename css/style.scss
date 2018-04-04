@@ -38,7 +38,7 @@ html, body {
 }
 body {  
     overflow: auto;
-    font-family:Open Sans,sans-serif;
+    font-family: 'Droid', Open Sans, sans-serif;
 }
 #container{
     width: 100%;
@@ -47,7 +47,7 @@ body {
 }
 .content {
   position: relative;
-  width: 980px;
+  max-width: 1170px;
   margin:0 auto;
 }
 .clear:before,
@@ -106,4 +106,202 @@ body {
 }
 .my-mfp-slide-bottom.mfp-removing.mfp-bg {
   opacity: 0;
+}
+.hamburger {
+  height: 33px;
+  width: 40px;
+  position: relative;
+  z-index: 6;
+}
+
+.hamburger .inner,
+.hamburger .inner::before,
+.hamburger .inner::after {
+  background-color: #fff;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 32px;
+  -webkit-transition: all .3s ease;
+  transition: all .5s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+.hamburger .inner {
+  position: absolute;
+  top: 50%;
+}
+
+.hamburger .inner::before {
+  margin-top: -10px;
+  position: absolute;
+}
+
+.hamburger .inner::after {
+  margin-top: 10px;
+  position: absolute;
+}
+
+.hamburger.button-close .inner {
+  background-color: transparent;
+}
+
+.hamburger.button-close .inner::before,
+.hamburger.button-close .inner::after {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 0 50%;
+  -ms-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  width: 29px;
+}
+
+.hamburger.button-close .inner::after {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #202020;
+  .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left{
+      ul{
+        display: flex;
+        margin: 0;
+        li{
+          list-style: none;
+          a{
+            padding: 16px 20px;
+            display: block;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+            transition: all 250ms ease;
+          }
+          ul{
+            display: none;
+          }
+          &:hover{
+            a{
+              color: #afafaf;
+              text-decoration: none;
+            }
+          }
+          &.has-ul{
+            position: relative;
+            ul{
+              position: absolute;
+              top:100%;
+              left: 0;
+              background: #202020;
+              padding: 0;
+              li{
+                display: block;
+                a{
+                  white-space: nowrap;
+                  border-bottom: 1px solid #3e3e3e;
+                  &:hover{
+                    color: #fff;
+                  }
+                }
+              }
+            }
+            &:after{
+              font: normal normal normal 14px/1 FontAwesome;
+              position: absolute;
+              content: "\f107";
+              top: 16px;
+              right: 3px;
+              color: #fff;
+            }
+            &:hover{
+              ul{
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+    .right{
+      .social-wrap{
+        display: flex;
+        a{
+          margin: 0 5px;
+          display: flex;
+          width: 27px;
+          height: 27px;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background: #303030;
+          color: #fff;
+          transition: all 250ms ease;
+          &:hover{
+            text-decoration: none;
+            background: #e5c603;
+          }
+        }
+      }
+    }
+  }
+}
+.mobile-menu{
+  transition: all 250ms ease;
+  transform: translateX(-100%);
+  z-index: 6;
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 53px;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  overflow: auto;
+  &.active{
+    transform: translateX(0);
+  }
+}
+.mobile-menu-top{
+  display: none;
+  width: 100%;
+  position: fixed;
+  z-index: 7;
+  top: 0;
+  left: 0;
+}
+@media screen and (max-width: 1024px) {
+  .menu{
+    display: none;
+  }
+  .mobile-menu-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #202020;
+    box-shadow: 0px 2px 10px 2px rgba(0,0,0,0.1);
+    .phone-link{
+      display: flex;
+      align-items: center;
+      color: #fff;
+      .fa{
+      }
+      p{
+        margin: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+  .mobile-menu{
+
+  }
 }

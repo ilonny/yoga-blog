@@ -4,10 +4,10 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     minifyCSS = require('gulp-csso'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    browserSync = require('browser-sync').create();
 gulp.task('sass', function(){
-    return watch('css/**/*.scss', function(){
-        gulp.src('css/**/*.scss')
+    return gulp.src('css/**/*.scss')
             .pipe(sass().on('error', sass.logError))
             .pipe(sourcemaps.init())
             .pipe(autoprefixer({
@@ -16,8 +16,17 @@ gulp.task('sass', function(){
             }))
             .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest('css'))
-    });
+            .pipe(browserSync.stream());
 })
+
+gulp.task('serve', ['sass'], function() {
+    browserSync.init({
+        proxy: "yoga-blog/"
+    });
+    gulp.watch("css/**/*.scss", ['sass']);
+    gulp.watch("css/**/*.scss").on('change', browserSync.reload);
+});
+
 
 gulp.task('build-css', function(){
     return gulp
@@ -28,4 +37,4 @@ gulp.task('build-css', function(){
 });
 
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['serve']);
