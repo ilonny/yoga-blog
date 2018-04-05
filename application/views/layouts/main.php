@@ -5,12 +5,11 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\Menu;
 use app\models\UserSocial;
+use app\models\Author;
 
 AppAsset::register($this);
 ?>
@@ -46,7 +45,13 @@ AppAsset::register($this);
                     <?= $content ?>
                 </div>
                 <div class="right-side">
-                    <?= $this->render('right_side.php'); ?>
+                    <?php
+                        $author = Author::findOne(1);
+                    ?>
+                    <?= $this->render('right_side.php', [
+                        'author' => $author,
+                        'social' => $social
+                    ]); ?>
                 </div>
             </div>
         </div>
