@@ -2,12 +2,10 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Url;
-
+$this->registerJsFile('/js/index.js', ['depends' => '\app\assets\AppAsset']);
 $this->title = 'Блог | Главная';
 ?>
-<div class="slider-wrap">
-    <?= $this->render('slider', [
-            'slides' => $slides,
-        ]);
-    ?>
-</div>
+<?= $this->render('slider', [
+        'slides' => $slides,
+    ]);
+?>
