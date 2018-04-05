@@ -469,6 +469,8 @@ body {
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #e9e9e9; }
+  .main-content .right-side .discusses .list .item:nth-last-child(1) {
+    border: none; }
   .main-content .right-side .discusses .list .item .img-wrap {
     width: 80px;
     height: 80px;
@@ -485,6 +487,16 @@ body {
     text-decoration: underline; }
     .main-content .right-side .discusses .list .item a:hover {
       text-decoration: none; }
+
+.main-content .right-side .practice img {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-width: 100%; }
 
 #yii-debug-toolbar {
   display: none !important; }

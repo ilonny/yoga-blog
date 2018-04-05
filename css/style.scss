@@ -484,6 +484,9 @@ body {
           align-items: center;
           padding: 10px 0;
           border-bottom: 1px solid #e9e9e9;
+          &:nth-last-child(1){
+            border: none;
+          }
           .img-wrap{
             width: 80px;
             height: 80px;
@@ -504,6 +507,18 @@ body {
             }
           }
         }
+      }
+    }
+    .practice{
+      img{
+        display: block;
+        padding: 4px;
+        margin-bottom: 20px;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-width: 100%;
       }
     }
   }

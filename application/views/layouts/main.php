@@ -55,6 +55,7 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
+        <?= $this->render('gallery'); ?>
     </div>
 <?php $this->endBody() ?>
 </body>
