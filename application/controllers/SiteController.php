@@ -30,4 +30,9 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionContact()
+    {
+        return $this->render('contact');
+    }
 }

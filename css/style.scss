@@ -779,4 +779,14 @@ body {
       }
     }
   }
+  textarea{
+    resize: vertical;
+  }
+}
+
+input.has-error, textarea.has-error, select.has-error{
+  border: 1px solid red !important;
+}
+input.has-success, textarea.has-success, select.has-success{
+  border: 1px solid green !important;
 }
