@@ -9,6 +9,7 @@ use app\models\Slider;
 use app\models\Author;
 use app\models\Question;
 use app\models\Post;
+use app\models\Menu;
 use yii\data\Pagination;
 
 class SiteController extends Controller
@@ -32,8 +33,29 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionDetailview()
+    public function actionCategory($id)
     {
+        $category = Menu::findOne($id);
+        $query = Post::find()->andWhere(['category_id' => $id])->orderBy('create_at DESC');
+        $countPosts = clone $query;
+        $pages = new Pagination([
+            'totalCount' => $countPosts->count(),
+            'pageSize' => 9,
+        ]);
+        $posts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        $slides = Slider::find()->all();
+        return $this->render('category', [
+            'posts' => $posts,
+            'pages' => $pages,
+            'category' => $category,
+        ]);   
+    }
+
+    public function actionDetailview($id)
+    {
+        
         return $this->render('detailview');
     }
 
