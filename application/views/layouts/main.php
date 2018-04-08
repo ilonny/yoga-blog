@@ -26,7 +26,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-    <div id="container" class="container">
+    <div id="container">
         <?php
             $menu_cats = Menu::find()
             ->andWhere(['<>', 'id', 1])
@@ -39,7 +39,7 @@ AppAsset::register($this);
             'social' => $social,
         ]); ?>
         <?= $this->render('logo.php'); ?>
-        <div class="content">
+        <div class="content container">
             <div class="main-content">
                 <div class="left-side">
                     <?= $content ?>
@@ -55,7 +55,10 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
-        <?= $this->render('gallery'); ?>
+        <?= $this->render('bottom_gallery'); ?>
+        <?= $this->render('footer', [
+            'social' => $social            
+        ]); ?>
     </div>
 <?php $this->endBody() ?>
 </body>

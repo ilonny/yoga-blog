@@ -1,3 +1,6 @@
+<?php
+    use yii\helpers\Url;
+?>
 <header class="menu">
     <div class="content">
         <div class="left">
@@ -15,6 +18,8 @@
                         <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
+                <li><a href="<?= Url::to(['/site/about']) ?>">Обо мне</a></li>
+                <li><a href="<?= Url::to(['/site/contact']) ?>">Задать вопрос</a></li>
             </ul>
         </div>
         <div class="right">

@@ -9,3 +9,5 @@ $this->title = 'Блог | Главная';
         'slides' => $slides,
     ]);
 ?>
+<?= $this->render('posts', [
+]); ?>
