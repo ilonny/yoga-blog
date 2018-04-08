@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 use app\models\Slider;
+use app\models\Author;
 
 class SiteController extends Controller
 {
@@ -17,9 +18,16 @@ class SiteController extends Controller
         ]);
     }
 
-
     public function actionDetailview()
     {
         return $this->render('detailview');
+    }
+
+    public function actionAbout()
+    {
+        $model = Author::findOne(1);
+        return $this->render('about', [
+            'model' => $model,
+        ]);
     }
 }

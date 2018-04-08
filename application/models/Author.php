@@ -11,6 +11,8 @@ use Yii;
  * @property string $name
  * @property string $img_src
  * @property string $text
+ * @property string $img_src_inside
+ * @property string $text_inside
  */
 class Author extends \yii\db\ActiveRecord
 {
@@ -28,9 +30,8 @@ class Author extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'img_src', 'text'], 'required'],
-            [['text'], 'string'],
-            [['name', 'img_src'], 'string', 'max' => 255],
+            [['text', 'text_inside'], 'string'],
+            [['name', 'img_src', 'img_src_inside'], 'string', 'max' => 255],
         ];
     }
 
@@ -44,6 +45,8 @@ class Author extends \yii\db\ActiveRecord
             'name' => 'Name',
             'img_src' => 'Img Src',
             'text' => 'Text',
+            'img_src_inside' => 'Img Src Inside',
+            'text_inside' => 'Text Inside',
         ];
     }
 }
