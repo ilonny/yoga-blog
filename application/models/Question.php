@@ -13,6 +13,7 @@ use Yii;
  * @property string $name
  * @property string $email
  * @property int $showing
+ * @property string $answer
  */
 class Question extends \yii\db\ActiveRecord
 {
@@ -30,7 +31,7 @@ class Question extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content'], 'string'],
+            [['content', 'answer'], 'string'],
             [['showing'], 'integer'],
             [['topic', 'name', 'email'], 'string', 'max' => 255],
         ];
@@ -48,6 +49,7 @@ class Question extends \yii\db\ActiveRecord
             'name' => 'Name',
             'email' => 'Email',
             'showing' => 'Showing',
+            'answer' => 'Answer',
         ];
     }
 }

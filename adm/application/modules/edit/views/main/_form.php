@@ -46,14 +46,14 @@
             </div>
         <?php endforeach; ?>
         <?//php var_dump($model->table) ?>
-        <?php if ($model->table->id == 6): ?>
+        <!-- <?php if ($model->table->id == 6): ?>
             <label class="input-doc__label">
                 <span class="btn btn-success">Загрузить документ</span>
                 <span class="message"></span>
                 <input type="file" hidden name="input-doc-file" class="input-doc__input" style="display: none !important;">
             </label>
             <br>
-        <?php endif; ?>
+        <?php endif; ?> -->
         <button type="submit" class="btn btn-default submit-form">Сохранить</button>
         <?php $form->end(); ?>
     </div>

@@ -1,3 +1,9 @@
+input.has-error, textarea.has-error, select.has-error {
+  border: 1px solid red !important; }
+
+input.has-success, textarea.has-success, select.has-success {
+  border: 1px solid green !important; }
+
 @font-face {
   font-family: 'Droid';
   src: url("../fonts/DroidSerif-Regular.ttf");
@@ -756,10 +762,38 @@ body {
 .detailview textarea {
   resize: vertical; }
 
-input.has-error, textarea.has-error, select.has-error {
-  border: 1px solid red !important; }
+.questions {
+  margin-top: 30px; }
+  .questions__title {
+    font-size: 22px;
+    color: #404040; }
+  .questions .question {
+    padding: 10px 0;
+    border-bottom: 1px solid #c7c7c7; }
+    .questions .question:nth-last-child(1) {
+      border: none; }
+    .questions .question__topic {
+      color: #404040;
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: block; }
+    .questions .question .q {
+      font-size: 16px; }
 
-input.has-success, textarea.has-success, select.has-success {
-  border: 1px solid green !important; }
+.mr10 {
+  margin-right: 10px; }
+
+.pd10 {
+  padding: 10px; }
+
+.m10 {
+  margin: 10px; }
+
+a.m10 {
+  display: block;
+  color: #404040;
+  text-decoration: underline; }
+  a.m10:hover {
+    text-decoration: none; }
 
 /*# sourceMappingURL=style.css.map */

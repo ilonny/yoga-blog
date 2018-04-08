@@ -8,11 +8,11 @@
                 <?php foreach ($cats as $key => $cat): ?>
                 <?php $subs = $cat->getSubs($cat->id); ?>
                     <li <?= $subs ? 'class="li has-ul"' : ''; ?>>
-                        <a href=""><?= $cat->name; ?></a>
+                        <a href="<?= Url::to(['site/category', 'id' => $cat->id]); ?>"><?= $cat->name; ?></a>
                         <?php if ($subs): ?>
                             <ul>
                                 <?php foreach ($subs as $sub): ?>
-                                    <li><a href=""><?= $sub->name; ?></a></li>
+                                    <li><a href="<?= Url::to(['site/category', 'id' => $cat->id]); ?>"><?= $sub->name; ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>

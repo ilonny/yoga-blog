@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 $this->registerJsFile('/js/contact.js', ['depends' => 'app\assets\AppAsset']);
 ?>
 <div class="detailview contact">
@@ -25,8 +26,24 @@ $this->registerJsFile('/js/contact.js', ['depends' => 'app\assets\AppAsset']);
                 <div class="col-xs-12"> 
                     <button class="btn">Отправить</button>
                 </div>
-                <div class="error-summary"></div>
+                <div class="col-xs-12">
+                    <div class="error-summary"></div>
+                </div>
             </div>
         </form>
+    </div>
+    <div class="questions post">
+        <div class="questions__title">Ранее заданные вопросы</div>
+        <?php if ($questions): ?>
+        <?php foreach ($questions as $model): ?>
+            <div class="question">
+                <a href="<?= Url::to(['site/question', 'id' => $model->id]); ?>" class="question__topic"><?= $model->topic; ?></a>
+                <div><blockquote class="q"><?= $model->content; ?></blockquote></div>
+                <div class="question__answer"> <?= $model->answer; ?> </div>
+            </div>
+        <?php endforeach; ?>
+        <?php else: ?>
+            <p style="padding: 10px 0;">Ранее не было задано вопросов, станьте первым</p>
+        <?php endif; ?>
     </div>
 </div>

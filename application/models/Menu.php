@@ -13,6 +13,7 @@ use Yii;
  *
  * @property Menu $parentCategory
  * @property Menu[] $menus
+ * @property Post[] $posts
  */
 class Menu extends \yii\db\ActiveRecord
 {
@@ -63,6 +64,14 @@ class Menu extends \yii\db\ActiveRecord
     public function getMenus()
     {
         return $this->hasMany(Menu::className(), ['parent_category' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['category_id' => 'id']);
     }
 
     public function getSubs($id){

@@ -15,5 +15,15 @@ $(document).ready(function(){
 		        ]
 		    },
         },
+        onSuccess: function(data){
+            console.log('success', data)
+            $('.error-summary').html(data.message).fadeIn('fast');
+            setTimeout(function(){
+                $('.error-summary').html("").fadeOut('fast');
+            }, 3000);
+        },
+        onError: function(data){
+            console.log('error', data)
+        },
     })
 });
