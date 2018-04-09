@@ -39,7 +39,7 @@ class SiteController extends Controller
         //если родительская категория - искать еще и в подкатегориях, иначе только в одной категории.
         if ($category->parent_category == 1){
             $query = Post::find()->andWhere(['category_id' => $id])->orderBy('create_at DESC');
-            //тут запрос по всем подкатегориям
+            //тут запрос который отбирает посты со всех подкатегорий которые относятся к категории, включая и саму категорию
         } else {
             $query = Post::find()->andWhere(['category_id' => $id])->orderBy('create_at DESC');            
         }
