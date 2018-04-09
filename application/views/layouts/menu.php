@@ -11,8 +11,10 @@
                         <a href="<?= Url::to(['site/category', 'id' => $cat->id]); ?>"><?= $cat->name; ?></a>
                         <?php if ($subs): ?>
                             <ul>
-                                <?php foreach ($subs as $sub): ?>
-                                    <li><a href="<?= Url::to(['site/category', 'id' => $cat->id]); ?>"><?= $sub->name; ?></a></li>
+                                <?php $count_sub = 0; foreach ($subs as $key_sub => $sub): ?>
+                                    <?php if ($sub->getPostsCount()): $count_sub++;?>
+                                        <li><a href="<?= Url::to(['site/category', 'id' => $sub->id]); ?>"><?= $sub->name; ?></a></li>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>
                         <?php endif; ?>

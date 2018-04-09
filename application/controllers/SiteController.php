@@ -36,7 +36,13 @@ class SiteController extends Controller
     public function actionCategory($id)
     {
         $category = Menu::findOne($id);
-        $query = Post::find()->andWhere(['category_id' => $id])->orderBy('create_at DESC');
+        //если родительская категория - искать еще и в подкатегориях, иначе только в одной категории.
+        if ($category->parent_category == 1){
+            $query = Post::find()->andWhere(['category_id' => $id])->orderBy('create_at DESC');
+            //тут запрос по всем подкатегориям
+        } else {
+            $query = Post::find()->andWhere(['category_id' => $id])->orderBy('create_at DESC');            
+        }
         $countPosts = clone $query;
         $pages = new Pagination([
             'totalCount' => $countPosts->count(),
@@ -55,8 +61,16 @@ class SiteController extends Controller
 
     public function actionDetailview($id)
     {
-        
-        return $this->render('detailview');
+        $post = Post::findOne($id);
+        $related_posts = Post::find()
+            ->andWhere(['category_id' => $post->category_id])
+            ->orderBy('id DESC')
+            ->limit(3)
+            ->all();
+        return $this->render('detailview', [
+            'post' => $post,
+            'related_posts' => $related_posts,
+        ]);
     }
 
     public function actionAbout()
@@ -103,4 +117,24 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    // public function actionFillCats()
+    // {
+    //     $arr = [
+    //         'Разминки и Асаны',
+    //         'Пранаямы',
+    //         'Бандхи, мудры и медитации',
+    //         'Йога для здоровья',
+    //         'Начинающим',
+    //         'Продолжающим и преподавателям',
+    //         'Развлекательное, интерьвью и промоушены',
+    //     ];
+    //     foreach ($arr as $key => $value) {
+    //         $model = new Menu;
+    //         $model->name = $value;
+    //         $model->parent_category = 3;
+    //         $model->save();
+    //     }
+    //     return true;
+    // }
 }

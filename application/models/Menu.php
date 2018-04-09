@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use app\models\Post;
 /**
  * This is the model class for table "menu".
  *
@@ -76,5 +76,9 @@ class Menu extends \yii\db\ActiveRecord
 
     public function getSubs($id){
         return Menu::find()->andWhere(['parent_category' => $id])->all();
+    }
+    public function getPostsCount(){
+        $count = count(Post::find()->andWhere(['category_id' => $this->id])->all());
+        return $count;
     }
 }

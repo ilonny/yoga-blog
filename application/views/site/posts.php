@@ -2,6 +2,8 @@
     use yii\widgets\LinkPager;
     use yii\helpers\Url;
     use app\Helpers\FileHelper;
+    $formatter = \Yii::$app->formatter;
+    
 ?>
 <div class="posts row">
     <?php foreach ($posts as $key => $post): ?>
@@ -14,7 +16,7 @@
                 <div class="post">
                     <div class="post-top">
                         <a href="<?= $cat_link ?>" class="post__category"><?= $post->getCategoryName(); ?></a>
-                        <div class="post__date"><?= $post->create_at; ?></div>
+                        <div class="post__date"><?= $formatter->asDatetime($post->create_at, "php:d-m-Y"); ?></div>
                     </div>
                     <a href="<?= $detail_link; ?>" class="post__title"><?= $post->title; ?></a>
                     <a href="<?= $detail_link; ?>" class="img-wrap">
@@ -33,7 +35,7 @@
                     <div class="right">
                         <div class="post-top">
                             <a href="<?= $cat_link ?>" class="post__category"><?= $post->getCategoryName(); ?></a>
-                            <div class="post__date"><?= $post->create_at; ?></div>
+                            <div class="post__date"><?= $formatter->asDatetime($post->create_at, "php:d-m-Y"); ?></div>
                         </div>
                         <a href="<?= $detail_link; ?>" class="post__title">Nam eu nisi non quam ultrices lacinia</a>
                         <div class="post-description"><?= yii\helpers\StringHelper::truncate($post->text_short, 119, '...'); ?></div>
