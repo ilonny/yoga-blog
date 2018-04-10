@@ -796,4 +796,11 @@ a.m10 {
   a.m10:hover {
     text-decoration: none; }
 
+.comments {
+  margin-top: 50px; }
+  .comments__title {
+    margin-bottom: 15px;
+    color: #404040;
+    font-size: 22px; }
+
 /*# sourceMappingURL=style.css.map */

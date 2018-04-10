@@ -830,3 +830,11 @@ a.m10{
     text-decoration: none;
   }
 }
+.comments{
+  margin-top: 50px;
+  &__title{
+    margin-bottom: 15px;
+    color: #404040;
+    font-size: 22px;
+  }
+}

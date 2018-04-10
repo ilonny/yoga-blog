@@ -4,6 +4,7 @@ use app\helpers\FileHelper;
 $formatter = \Yii::$app->formatter;
 $cat_link = Url::to(['/site/category', 'id' => $post->category_id]);
 $detail_link = Url::to(['/site/detailview', 'id' => $post->id]);
+$this->registerJsFile('/js/detailview.js', ['depends' => 'app\assets\AppAsset']);
 ?>
 <div class="detailview">
     <div class="post">
@@ -34,4 +35,48 @@ $detail_link = Url::to(['/site/detailview', 'id' => $post->id]);
             </div>
         </div>
     <?php endif; ?>
+    <!-- reviews -->
+    <div class="comments">
+    <?php $reviews = $post->getReviews(); ?>
+        <div class="comments__title">Комментарии (<?= count($reviews); ?>)</div>
+        <?php if ($reviews): ?>
+            <?php foreach ($reviews as $comment): ?>
+                <div class="question">
+                    <div class="question__topic"><?= $comment->title; ?></div>
+                    <div><blockquote class="q"><?= $comment->text; ?></blockquote></div>
+                    <div class="question__answer"> <?= $comment->answer; ?> </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Комментриев нет, оставьте первый комментарий</p>
+        <?php endif; ?>
+        <div class="post__title">Оставить комментарий</div>        
+        <form class="question-form">
+            <input type="hidden" name="post_id" value="<?= $post->id; ?>">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Заголовок комментрия</label>
+                    <input type="text" class="form-control" name="title">
+                </div>
+                <div class="col-xs-12">
+                    <label>Текст комментария</label>
+                    <textarea class="form-control" name="text" cols="30" rows="10"></textarea>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <label>Ваше имя</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <label>E-mail</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+                <div class="col-xs-12"> 
+                    <button class="btn">Отправить</button>
+                </div>
+                <div class="col-xs-12">
+                    <div class="error-summary"></div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

@@ -77,7 +77,7 @@ class Post extends \yii\db\ActiveRecord
      */
     public function getReviews()
     {
-        return Review::find()->andWhere(['post_id' => $this->id]);
+        return Review::find()->andWhere(['post_id' => $this->id, 'showing' => 1])->all();
     }
 
     public function getCategoryName()

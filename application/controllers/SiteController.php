@@ -10,6 +10,7 @@ use app\models\Author;
 use app\models\Question;
 use app\models\Post;
 use app\models\Menu;
+use app\models\Review;
 use yii\data\Pagination;
 
 class SiteController extends Controller
@@ -118,6 +119,28 @@ class SiteController extends Controller
         return $this->render('question', [
             'model' => $model,
         ]);
+    }
+
+    public function actionReviewAdd()
+    {
+        $data = Yii::$app->request->post();        
+        $model = new Review;
+        $model->title = $data['title'];
+        $model->text = $data['text'];
+        $model->name = $data['name'];
+        $model->email = $data['email'];
+        $model->post_id = $data['post_id'];
+        if ($model->save()) {
+            return json_encode([
+                'status' => 'success',
+                'message' => 'Спасибо за комментарий! Он будет виден на сайте после проверки модератором.',
+            ]);
+        } else {
+            return json_encode([
+                'status' => 'error',
+                'message' => 'Возникла ошибка при добавлении комментария, пожалуйста, свяжитесь с администрацией.',
+            ]);
+        }   
     }
 
     // public function actionFillCats()
