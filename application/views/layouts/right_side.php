@@ -1,5 +1,6 @@
 <?php
     use app\helpers\FileHelper;
+    use yii\helpers\Url;
 ?>
 <div class="border-block author">
     <div class="border-block__title">Об авторе</div>
@@ -19,17 +20,17 @@
 <div class="border-block discusses">
     <div class="border-block__title">Обсуждаемое</div>
     <div class="list">
-        <?php for ($i=1; $i<=4; $i++): ?>
+        <?php foreach ($most_comment_posts as $post): ?>
             <div class="item">
-                <a href="" target="_blank" class="img-wrap">
-                    <img src="<?=FileHelper::getImageThumb('/images/recent.jpg', 80, 80); ?>">
+                <a href="<?= $post->getDetailLink(); ?>" target="_blank" class="img-wrap">
+                    <img src="<?=FileHelper::getImageThumb($post->img_src_short, 80, 80); ?>">
                 </a>
                 <div class="right">
-                    <a href="" class="title">Nam eu nisi non quam ultrices lacinia</a>
-                    <div class="date">February 20, 2017</div>
+                    <a href="<?= $post->getDetailLink(); ?>" class="title"><?= $post->title; ?></a>
+                    <div class="date"><?=$post->formatPostDate(); ?></div>
                 </div>
             </div>
-        <?php endfor; ?>
+        <?php endforeach; ?>
     </div>
 </div>
 

@@ -50,11 +50,11 @@ AppAsset::register($this);
                     <?php
                         $author = Author::findOne(1);
                         $most_comment_posts = Post::getMostComments();
-                        var_dump($most_comment_posts);
                     ?>
                     <?= $this->render('right_side.php', [
                         'author' => $author,
-                        'social' => $social
+                        'social' => $social,
+                        'most_comment_posts' => $most_comment_posts,
                     ]); ?>
                 </div>
             </div>

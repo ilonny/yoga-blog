@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use app\models\Menu;
 use app\models\Review;
 /**
@@ -101,5 +102,21 @@ class Post extends \yii\db\ActiveRecord
         $arr = array_slice($arr, 0, 5);
         $ids = array_column($arr, 'id');
         return Post::find()->andWhere(['id' => $ids])->all();
+    }
+
+    public function formatPostDate()
+    {
+        $formatter = \Yii::$app->formatter;
+        return $formatter->asDatetime($this->create_at, "php:d-m-Y");
+    }
+
+    public function getCategoryLink()
+    {
+        return Url::to(['/site/category', 'id' => $this->category_id]);
+    }
+
+    public function getDetailLink()
+    {
+        return Url::to(['/site/detailview', 'id' => $this->id]);
     }
 }
