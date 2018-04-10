@@ -7,7 +7,7 @@ $this->registerJsFile('/js/detailview.js', ['depends' => 'app\assets\AppAsset'])
     <div class="post">
         <div class="post-top">
             <a href="<?= $cat_link; ?>" class="post__category"><?= $post->getCategoryName(); ?></a>
-            <div class="post__date"><?= $formatter->asDatetime($post->create_at, "php:d-m-Y"); ?></div>
+            <div class="post__date"><?= $post->formatPostDate(); ?></div>
         </div>
         <div class="post__title"><?= $post->title; ?></div>
         <div class="img-wrap">

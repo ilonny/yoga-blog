@@ -99,9 +99,14 @@ class Post extends \yii\db\ActiveRecord
             ]);
         }
         ArrayHelper::multisort($arr, 'count', SORT_DESC);
-        $arr = array_slice($arr, 0, 5);
+        $arr = array_slice($arr, 0, 4);
         $ids = array_column($arr, 'id');
-        return Post::find()->andWhere(['id' => $ids])->all();
+        $posts = [];
+        foreach ($arr as $key => $value) {
+            array_push($posts, Post::findOne($value['id']));
+        }
+        return $posts;
+        // return Post::find()->andWhere(['id' => $ids])->all();
     }
 
     public function formatPostDate()
