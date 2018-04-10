@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use app\models\Menu;
 use app\models\Review;
 /**
@@ -84,5 +85,21 @@ class Post extends \yii\db\ActiveRecord
     {
         $cat = Menu::findOne($this->category_id);
         return $cat->name;
+    }
+
+    public function getMostComments()
+    {
+        $posts = Post::find()->all();
+        $arr = [];
+        foreach ($posts as $key => $value) {
+            array_push($arr, [
+                'id' => $value->id,
+                'count' => count($value->getReviews()),
+            ]);
+        }
+        ArrayHelper::multisort($arr, 'count', SORT_DESC);
+        $arr = array_slice($arr, 0, 5);
+        $ids = array_column($arr, 'id');
+        return Post::find()->andWhere(['id' => $ids])->all();
     }
 }

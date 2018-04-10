@@ -10,6 +10,8 @@ use app\assets\AppAsset;
 use app\models\Menu;
 use app\models\UserSocial;
 use app\models\Author;
+use app\models\Post;
+use app\models\Review;
 
 AppAsset::register($this);
 ?>
@@ -47,6 +49,8 @@ AppAsset::register($this);
                 <div class="right-side">
                     <?php
                         $author = Author::findOne(1);
+                        $most_comment_posts = Post::getMostComments();
+                        var_dump($most_comment_posts);
                     ?>
                     <?= $this->render('right_side.php', [
                         'author' => $author,
