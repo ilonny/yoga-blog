@@ -64,6 +64,7 @@ class SiteController extends Controller
     {
         $post = Post::findOne($id);
         $related_posts = Post::find()
+            ->andWhere(['<>', 'id', $post->category_id])
             ->andWhere(['category_id' => $post->category_id])
             ->orderBy('id DESC')
             ->limit(3)

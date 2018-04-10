@@ -40,13 +40,37 @@
                         echo $form->field($model, $field->name)->dropDownList([0 => 'Нет', 1 => 'Да'], ['class' => 'form-control'])->label($field->alias);
                         break;
                     case 'dropDownList':
-                        echo $form->field($model, $field->name)->dropDownList($model->getRelationArray($field->name), ['class' => 'form-control'])->label($field->alias);
+                        if ($model->table->id == 8 && $field->name == 'category_id'){
+                            // echo '<pre>';
+                            // echo 'select is here';                            
+                            // echo '<br>';
+                            $queryResult = \Yii::$app->dbFrontEnd->createCommand("SELECT * FROM `menu`")->queryAll();
+                            foreach ($queryResult as $key => $value){
+                                if ($value['parent_category'] != 1 && $value['parent_category'] != NULL){
+                                    $parent_cat = \Yii::$app->dbFrontEnd->createCommand("SELECT * FROM `menu` WHERE id = {$value['parent_category']}")->queryAll();
+                                    $queryResult[$key]['parent_category_name'] = $parent_cat[0]['name'];
+                                }
+                            }
+                            // var_dump($queryResult);
+                            // echo '</pre>'; ?>
+                            <div class="form-group field-dynamicmodel-category_id">
+                                <label class="control-label" for="dynamicmodel-category_id">Категория</label>
+                                <select id="dynamicmodel-category_id" class="form-control" name="DynamicModel[category_id]">
+                                    <?php foreach($queryResult as $option): ?>
+                                        <option value="<?= $option['id']; ?>"><?= $option['parent_category_name'] ? "{$option['parent_category_name']} - " : "";; echo $option['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class="help-block"></div>
+                            </div>
+                        <? } else {
+                            echo $form->field($model, $field->name)->dropDownList($model->getRelationArray($field->name), ['class' => 'form-control'])->label($field->alias);
+                        }
                         break;
                 } ?>
             </div>
         <?php endforeach; ?>
         <?//php var_dump($model->table) ?>
-        <!-- <?php if ($model->table->id == 6): ?>
+        <!-- <?php if ($model->table->id == 8): ?>
             <label class="input-doc__label">
                 <span class="btn btn-success">Загрузить документ</span>
                 <span class="message"></span>

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\Menu;
+use app\models\Review;
 /**
  * This is the model class for table "post".
  *
@@ -18,6 +19,7 @@ use app\models\Menu;
  * @property int $index_page
  *
  * @property Menu $category
+ * @property Review[] $reviews
  */
 class Post extends \yii\db\ActiveRecord
 {
@@ -70,10 +72,17 @@ class Post extends \yii\db\ActiveRecord
         return $this->hasOne(Menu::className(), ['id' => 'category_id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReviews()
+    {
+        return Review::find()->andWhere(['post_id' => $this->id]);
+    }
+
     public function getCategoryName()
     {
         $cat = Menu::findOne($this->category_id);
         return $cat->name;
     }
-
 }
