@@ -12,6 +12,7 @@ use app\models\UserSocial;
 use app\models\Author;
 use app\models\Post;
 use app\models\Review;
+use app\models\Logo;
 
 AppAsset::register($this);
 ?>
@@ -40,7 +41,8 @@ AppAsset::register($this);
             'cats' => $menu_cats,
             'social' => $social,
         ]); ?>
-        <?= $this->render('logo.php'); ?>
+        <?php $logo = Logo::findOne(1); ?>
+        <?= $this->render('logo.php', ['logo' => $logo]); ?>
         <div class="content container">
             <div class="main-content">
                 <div class="left-side">
