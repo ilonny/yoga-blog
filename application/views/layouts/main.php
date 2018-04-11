@@ -13,6 +13,9 @@ use app\models\Author;
 use app\models\Post;
 use app\models\Review;
 use app\models\Logo;
+use app\models\YoutubeIframe;
+use app\models\PracticeImage;
+use app\models\WidgetIframe;
 
 AppAsset::register($this);
 ?>
@@ -52,18 +55,30 @@ AppAsset::register($this);
                     <?php
                         $author = Author::findOne(1);
                         $most_comment_posts = Post::getMostComments();
+                        $popular_posts = Post::find()->andWhere(['popular' => 1])->all();
+                        $iframes = YoutubeIframe::find()->all();
+                        $practice_image = PracticeImage::find()->all();
+                        $widgets = WidgetIframe::find()->all();
                     ?>
                     <?= $this->render('right_side.php', [
                         'author' => $author,
                         'social' => $social,
                         'most_comment_posts' => $most_comment_posts,
+                        'popular_posts' => $popular_posts,
+                        'iframes' => $iframes,
+                        'widgets' => $widgets,
                     ]); ?>
                 </div>
             </div>
         </div>
         <?= $this->render('bottom_gallery'); ?>
+        <?php
+            $recent_posts = Post::find()->orderBy('create_at DESC')->limit(4)->all();
+        ?>
         <?= $this->render('footer', [
-            'social' => $social            
+            'cats' => $menu_cats,
+            'social' => $social,
+            'recent_posts' => $recent_posts,
         ]); ?>
     </div>
 <?php $this->endBody() ?>

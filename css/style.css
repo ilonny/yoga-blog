@@ -425,12 +425,16 @@ body {
 
 .main-content .right-side .author {
   text-align: center; }
+  .main-content .right-side .author a {
+    color: #404040; }
   .main-content .right-side .author-img {
     margin-bottom: 15px; }
     .main-content .right-side .author-img img {
       max-width: 150px;
       border-radius: 150px; }
   .main-content .right-side .author__name {
+    margin-top: 15px;
+    display: block;
     font-size: 18px;
     text-transform: uppercase;
     line-height: 1.4em;
@@ -501,6 +505,7 @@ body {
 .main-content .right-side .practice img {
   display: block;
   padding: 4px;
+  margin: auto;
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;

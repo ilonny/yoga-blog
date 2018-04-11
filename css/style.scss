@@ -303,16 +303,11 @@ body {
       display: flex;
       align-items: center;
       color: #fff;
-      .fa{
-      }
       p{
         margin: 0;
         margin-left: 10px;
       }
     }
-  }
-  .mobile-menu{
-
   }
 }
 .site-logo{
@@ -449,6 +444,9 @@ body {
     }
     .author{
       text-align: center;
+      a{
+        color: #404040;
+      }
       &-img{
         margin-bottom: 15px;
         img{
@@ -457,6 +455,8 @@ body {
         }
       }
       &__name{
+        margin-top: 15px;
+        display: block;
         font-size: 18px;
         text-transform: uppercase;
         line-height: 1.4em;
@@ -525,6 +525,7 @@ body {
       img{
         display: block;
         padding: 4px;
+        margin: auto;
         margin-bottom: 20px;
         line-height: 1.42857143;
         background-color: #fff;
