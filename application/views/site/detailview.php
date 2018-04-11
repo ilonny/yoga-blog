@@ -2,6 +2,11 @@
 use yii\helpers\Url;
 use app\helpers\FileHelper;
 $this->registerJsFile('/js/detailview.js', ['depends' => 'app\assets\AppAsset']);
+$this->registerMetatag(['name' => 'og:title', 'content' => $post->title]);
+//Url::home(true)
+$this->registerMetatag(['name' => 'og:image', 'content' => $post->img_src]);
+
+$this->title = $post->title;
 ?>
 <div class="detailview">
     <div class="post">
@@ -31,6 +36,9 @@ $this->registerJsFile('/js/detailview.js', ['depends' => 'app\assets\AppAsset'])
             </div>
         </div>
     <?php endif; ?>
+    <!-- share -->
+    <div class="comments__title">Поделиться</div>    
+    <div id="my-share"></div>    
     <!-- reviews -->
     <div class="comments">
     <?php $reviews = $post->getReviews(); ?>
@@ -76,3 +84,18 @@ $this->registerJsFile('/js/detailview.js', ['depends' => 'app\assets\AppAsset'])
         </form>
     </div>
 </div>
+
+<script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="https://yastatic.net/share2/share.js"></script>
+<script>
+var myShare = document.getElementById('my-share');
+
+Ya.share2('my-share', {
+    content: {
+        url: '<?= Url::home(true).Url::to(['site/detailview', id=> $post->id]); ?>',
+        title: '<?= $post->title;  ?>',
+        description: '<?= $post->text_short; ?>',
+        image: '<?= $post->img_src; ?>'
+    }
+});
+</script>

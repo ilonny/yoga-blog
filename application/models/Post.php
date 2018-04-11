@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use app\models\Menu;
 use app\models\Review;
+use yii\behaviors\SluggableBehavior;
 /**
  * This is the model class for table "post".
  *
@@ -20,12 +21,24 @@ use app\models\Review;
  * @property int $category_id
  * @property int $index_page
  * @property int $popular
+ * @property string $slug
  *
  * @property Menu $category
  * @property Review[] $reviews
  */
 class Post extends \yii\db\ActiveRecord
 {
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'title',
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -40,9 +53,9 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'category_id'], 'required'],
+            [['title', 'category_id', 'slug'], 'required'],
             [['create_at'], 'safe'],
-            [['text_short', 'text'], 'string'],
+            [['text_short', 'text', 'slug'], 'string'],
             [['category_id', 'index_page', 'popular'], 'integer'],
             [['title', 'img_src_short', 'img_src'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['category_id' => 'id']],
@@ -65,6 +78,7 @@ class Post extends \yii\db\ActiveRecord
             'category_id' => 'Category ID',
             'index_page' => 'Index Page',
             'popular' => 'Popular',
+            'slug' => 'Slug',
         ];
     }
 

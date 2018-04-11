@@ -42,7 +42,7 @@
                     case 'dropDownList':
                         if ($model->table->id == 8 && $field->name == 'category_id'){
                             // echo '<pre>';
-                            // echo 'select is here';                            
+                            // var_dump();
                             // echo '<br>';
                             $queryResult = \Yii::$app->dbFrontEnd->createCommand("SELECT * FROM `menu`")->queryAll();
                             foreach ($queryResult as $key => $value){
@@ -57,7 +57,7 @@
                                 <label class="control-label" for="dynamicmodel-category_id">Категория</label>
                                 <select id="dynamicmodel-category_id" class="form-control" name="DynamicModel[category_id]">
                                     <?php foreach($queryResult as $option): ?>
-                                        <option value="<?= $option['id']; ?>"><?= $option['parent_category_name'] ? "{$option['parent_category_name']} - " : "";; echo $option['name']; ?></option>
+                                        <option <?= $model->category_id == $option['id'] ? "selected" : ""; ?> value="<?= $option['id']; ?>"><?= $option['parent_category_name'] ? "{$option['parent_category_name']} - " : "";; echo $option['name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <div class="help-block"></div>

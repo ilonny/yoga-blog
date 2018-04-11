@@ -17,22 +17,24 @@
     </div>
 </div>
 
-<div class="border-block discusses">
-    <div class="border-block__title">Обсуждаемое</div>
-    <div class="list">
-        <?php foreach ($most_comment_posts as $post): ?>
-            <div class="item">
-                <a href="<?= $post->getDetailLink(); ?>" target="_blank" class="img-wrap">
-                    <img src="<?=FileHelper::getImageThumb($post->img_src_short, 80, 80); ?>">
-                </a>
-                <div class="right">
-                    <a href="<?= $post->getDetailLink(); ?>" class="title"><?= $post->title; ?></a>
-                    <div class="date"><?=$post->formatPostDate(); ?></div>
+<?php if ($most_comment_posts): ?>
+    <div class="border-block discusses">
+        <div class="border-block__title">Обсуждаемое</div>
+        <div class="list">
+            <?php foreach ($most_comment_posts as $post): ?>
+                <div class="item">
+                    <a href="<?= $post->getDetailLink(); ?>" target="_blank" class="img-wrap">
+                        <img src="<?=FileHelper::getImageThumb($post->img_src_short, 80, 80); ?>">
+                    </a>
+                    <div class="right">
+                        <a href="<?= $post->getDetailLink(); ?>" class="title"><?= $post->title; ?></a>
+                        <div class="date"><?=$post->formatPostDate(); ?></div>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 <?php if ($practice_image): ?>
     <div class="border-block practice">
         <div class="border-block__title">Для практики</div>

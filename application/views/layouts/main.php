@@ -16,6 +16,7 @@ use app\models\Logo;
 use app\models\YoutubeIframe;
 use app\models\PracticeImage;
 use app\models\WidgetIframe;
+use app\models\Metatags;
 
 AppAsset::register($this);
 ?>
@@ -26,6 +27,11 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php 
+    $metatags = Metatags::find()->all();
+    foreach ($metatags as $tag): ?>
+        <?= $tag->value; ?>
+    <?php endforeach; ?>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
