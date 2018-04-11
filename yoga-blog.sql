@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Апр 09 2018 г., 20:47
+-- Время создания: Апр 11 2018 г., 21:31
 -- Версия сервера: 5.5.50-log
 -- Версия PHP: 7.0.8
 
@@ -73,6 +73,26 @@ INSERT INTO `instagram_gallery` (`id`, `img_src`, `link`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `logo`
+--
+
+CREATE TABLE `logo` (
+  `id` int(11) NOT NULL,
+  `img_src` varchar(255) NOT NULL,
+  `text` text,
+  `max_width` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `logo`
+--
+
+INSERT INTO `logo` (`id`, `img_src`, `text`, `max_width`) VALUES
+(1, '/images/files/632cc/9ef9d/814d651844fcdeb4852e5c22bc65f09f.png', NULL, 510);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `menu`
 --
 
@@ -108,6 +128,25 @@ INSERT INTO `menu` (`id`, `name`, `parent_category`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `metatags`
+--
+
+CREATE TABLE `metatags` (
+  `id` int(11) NOT NULL,
+  `name` text,
+  `value` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `metatags`
+--
+
+INSERT INTO `metatags` (`id`, `name`, `value`) VALUES
+(1, NULL, '    <meta name=\"description\" content=\"Блог Алексея Соколовского. Статьи про йогу.\">\r\n<meta name=\"keywords\" content=\"Блог, йога, пранаямы, Алексей Соколовский\">');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `post`
 --
 
@@ -120,16 +159,36 @@ CREATE TABLE `post` (
   `img_src_short` varchar(255) DEFAULT NULL,
   `img_src` varchar(255) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
-  `index_page` tinyint(1) DEFAULT '0'
+  `index_page` tinyint(1) DEFAULT '0',
+  `popular` tinyint(1) DEFAULT '0',
+  `slug` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `post`
 --
 
-INSERT INTO `post` (`id`, `title`, `create_at`, `text_short`, `text`, `img_src_short`, `img_src`, `category_id`, `index_page`) VALUES
-(1, 'Nam eu nisi non quam ultrices lacinia', '2018-04-09 16:26:20', 'Nam eu nisi non quam ultrices lacinia non sit amet urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar felis at massa auctor, ac bibendum dolor facilisis. Quisque tristique fringilla convallis. Quisque justo nunc, ornare et turpis et, mollis lobortis lectus.  Vivamus bl', '<div class=\"entry-content\">\r\n<p>Nam eu nisi non quam ultrices lacinia non sit amet urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar felis at massa auctor, ac bibendum dolor facilisis. Quisque tristique fringilla convallis. Quisque justo nunc, ornare et turpis et, mollis lobortis lectus.</p>\r\n<blockquote>\r\n<p><em>Vivamus blandit nulla et finibus hendrerit. Aliquam at dui id erat ullamcorper fringilla. Aliquam id tellus est. Praesent elementum in nisi quis volutpat. </em></p>\r\n</blockquote>\r\n<p>Vestibulum non augue vel dui consequat tempus ut vitae magna. Curabitur ligula orci, facilisis et urna a, rutrum auctor lorem.</p>\r\n<ul>\r\n<li>Proin lacinia sodales diam, vel congue purus feugiat in.</li>\r\n<li>Sed ut mattis sem, ac lacinia odio.</li>\r\n<li>Donec est leo, tincidunt sit amet tortor nec, sagittis tincidunt tortor.</li>\r\n<li>Mauris auctor libero et est faucibus aliquam.</li>\r\n</ul>\r\n<p><strong>Fusce finibus pulvinar tincidunt</strong>.</p>\r\n<p>Praesent dignissim nulla nulla, ut fermentum orci eleifend eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean quis velit gravida, faucibus dui et, ornare elit. Donec dictum, diam eget placerat molestie, purus velit condimentum libero, blandit sodales felis dui ac lectus.</p>\r\n<p>Vestibulum vulputate sed ligula vel euismod. Pellentesque vitae scelerisque nunc. Pellentesque quis rutrum orci. Sed tincidunt risus porta, commodo lacus ut, molestie urna. Fusce eu tellus sed neque ornare molestie non vitae sem.</p>\r\n</div>', '/images/files/839b8/e8b59/dacb250b354d7fc6e42909a85d2bfe52.jpg', '/images/files/34c12/4f58c/44bc50c4326ced64f2ce60b54dee1b37.jpg', 2, 0),
-(2, 'Nam eu nisi non quam ultrices lacinia', '2018-04-09 16:26:20', 'Nam eu nisi non quam ultrices lacinia non sit amet urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar felis at massa auctor, ac bibendum dolor facilisis. Quisque tristique fringilla convallis. Quisque justo nunc, ornare et turpis et, mollis lobortis lectus.  Vivamus bl', '<div class=\"entry-content\">\r\n<p>Nam eu nisi non quam ultrices lacinia non sit amet urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar felis at massa auctor, ac bibendum dolor facilisis. Quisque tristique fringilla convallis. Quisque justo nunc, ornare et turpis et, mollis lobortis lectus.</p>\r\n<blockquote>\r\n<p><em>Vivamus blandit nulla et finibus hendrerit. Aliquam at dui id erat ullamcorper fringilla. Aliquam id tellus est. Praesent elementum in nisi quis volutpat. </em></p>\r\n</blockquote>\r\n<p>Vestibulum non augue vel dui consequat tempus ut vitae magna. Curabitur ligula orci, facilisis et urna a, rutrum auctor lorem.</p>\r\n<ul>\r\n<li>Proin lacinia sodales diam, vel congue purus feugiat in.</li>\r\n<li>Sed ut mattis sem, ac lacinia odio.</li>\r\n<li>Donec est leo, tincidunt sit amet tortor nec, sagittis tincidunt tortor.</li>\r\n<li>Mauris auctor libero et est faucibus aliquam.</li>\r\n</ul>\r\n<p><strong>Fusce finibus pulvinar tincidunt</strong>.</p>\r\n<p>Praesent dignissim nulla nulla, ut fermentum orci eleifend eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean quis velit gravida, faucibus dui et, ornare elit. Donec dictum, diam eget placerat molestie, purus velit condimentum libero, blandit sodales felis dui ac lectus.</p>\r\n<p>Vestibulum vulputate sed ligula vel euismod. Pellentesque vitae scelerisque nunc. Pellentesque quis rutrum orci. Sed tincidunt risus porta, commodo lacus ut, molestie urna. Fusce eu tellus sed neque ornare molestie non vitae sem.</p>\r\n</div>', '/images/files/839b8/e8b59/dacb250b354d7fc6e42909a85d2bfe52.jpg', '/images/files/34c12/4f58c/44bc50c4326ced64f2ce60b54dee1b37.jpg', 5, 0);
+INSERT INTO `post` (`id`, `title`, `create_at`, `text_short`, `text`, `img_src_short`, `img_src`, `category_id`, `index_page`, `popular`, `slug`) VALUES
+(5, 'Тестовый пост', '2018-04-11 15:36:38', 'Текст краткого описания', '<p>Текст статьи</p>\r\n<p>а пока для примера код&nbsp;</p>\r\n<h2>Что такое Lorem Ipsum?</h2>\r\n<p><strong>Lorem Ipsum</strong>&nbsp;- это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem</p>', '/images/files/a4abe/825c8/25253c9263b49ec415a483996cb52c6f.jpg', '/images/files/61652/01cef/604643fd90c976fdfa029ddbe642e871.jpg', 3, 0, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `practice_image`
+--
+
+CREATE TABLE `practice_image` (
+  `id` int(11) NOT NULL,
+  `img_src` varchar(255) NOT NULL,
+  `link` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `practice_image`
+--
+
+INSERT INTO `practice_image` (`id`, `img_src`, `link`) VALUES
+(1, '/images/files/8c2bd/20230/9e6b3956e02273100845a296f5f20261.png', '/');
 
 -- --------------------------------------------------------
 
@@ -155,6 +214,23 @@ INSERT INTO `question` (`id`, `topic`, `content`, `name`, `email`, `showing`, `a
 (1, 'Тестовый вопрос', 'А что тестовый вопрос?', 'Дмитрий', 'lonnyfox@bk.ru', 1, 'Тестовый ответ'),
 (2, 'тест', 'тестесст', 'Дима', 'lonnyfox@bk.ru', 0, NULL),
 (3, 'Тест2', 'тест2', 'Дима', 'lonnyfox@bk.ru', 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `answer` text,
+  `showing` tinyint(1) DEFAULT '0',
+  `post_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -222,6 +298,43 @@ INSERT INTO `user_social` (`id`, `link`, `social_id`, `sorting`) VALUES
 (3, 'http://instagram.com/', 3, 3),
 (4, 'http://youtube.com/?gl=RU&hl=ru', 4, 4);
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `widget_iframe`
+--
+
+CREATE TABLE `widget_iframe` (
+  `id` int(11) NOT NULL,
+  `iframe_code` text NOT NULL,
+  `comment` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `widget_iframe`
+--
+
+INSERT INTO `widget_iframe` (`id`, `iframe_code`, `comment`) VALUES
+(1, '<div id=\"fb-root\"></div>\r\n<script>(function(d, s, id) {\r\n    var js, fjs = d.getElementsByTagName(s)[0];\r\n    if (d.getElementById(id)) return;\r\n    js = d.createElement(s); js.id = id;\r\n    js.src = \'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12\';\r\n    fjs.parentNode.insertBefore(js, fjs);\r\n    }(document, \'script\', \'facebook-jssdk\'));</script>\r\n    <div class=\"fb-page\" data-href=\"https://www.facebook.com/promenadethemes/\" data-tabs=\"timeline\" data-small-header=\"false\" data-adapt-container-width=\"true\" data-hide-cover=\"false\" data-show-facepile=\"true\"><blockquote cite=\"https://www.facebook.com/promenadethemes/\" class=\"fb-xfbml-parse-ignore\"><a href=\"https://www.facebook.com/promenadethemes/\">Promenade Themes</a></blockquote></div>', 'Виджет группы фейсбук');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `youtube_iframe`
+--
+
+CREATE TABLE `youtube_iframe` (
+  `id` int(11) NOT NULL,
+  `iframe_code` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `youtube_iframe`
+--
+
+INSERT INTO `youtube_iframe` (`id`, `iframe_code`) VALUES
+(1, '<iframe width=\"100%\" src=\"https://www.youtube.com/embed/8OBfr46Y0cQ?list=PLpcSpRrAaOaqMA4RdhSnnNcaqOVpX7qi5\" frameborder=\"0\" allowfullscreen=\"\"></iframe>');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -239,11 +352,23 @@ ALTER TABLE `instagram_gallery`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `logo`
+--
+ALTER TABLE `logo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`),
   ADD KEY `parent_category` (`parent_category`);
+
+--
+-- Индексы таблицы `metatags`
+--
+ALTER TABLE `metatags`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `post`
@@ -253,10 +378,23 @@ ALTER TABLE `post`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Индексы таблицы `practice_image`
+--
+ALTER TABLE `practice_image`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Индексы таблицы `slider`
@@ -278,6 +416,18 @@ ALTER TABLE `user_social`
   ADD KEY `social_id` (`social_id`);
 
 --
+-- Индексы таблицы `widget_iframe`
+--
+ALTER TABLE `widget_iframe`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `youtube_iframe`
+--
+ALTER TABLE `youtube_iframe`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -294,22 +444,46 @@ ALTER TABLE `instagram_gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT для таблицы `logo`
+--
+ALTER TABLE `logo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT для таблицы `metatags`
+--
+ALTER TABLE `metatags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT для таблицы `practice_image`
+--
+ALTER TABLE `practice_image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `question`
 --
 ALTER TABLE `question`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `slider`
@@ -330,6 +504,18 @@ ALTER TABLE `user_social`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT для таблицы `widget_iframe`
+--
+ALTER TABLE `widget_iframe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `youtube_iframe`
+--
+ALTER TABLE `youtube_iframe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Ограничения внешнего ключа сохраненных таблиц
 --
 
@@ -340,10 +526,10 @@ ALTER TABLE `menu`
   ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`parent_category`) REFERENCES `menu` (`id`) ON DELETE SET NULL;
 
 --
--- Ограничения внешнего ключа таблицы `post`
+-- Ограничения внешнего ключа таблицы `review`
 --
-ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `menu` (`id`);
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON DELETE SET NULL;
 
 --
 -- Ограничения внешнего ключа таблицы `user_social`
