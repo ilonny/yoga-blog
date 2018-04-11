@@ -19,6 +19,7 @@ use app\models\Review;
  * @property string $img_src
  * @property int $category_id
  * @property int $index_page
+ * @property int $popular
  *
  * @property Menu $category
  * @property Review[] $reviews
@@ -42,7 +43,7 @@ class Post extends \yii\db\ActiveRecord
             [['title', 'category_id'], 'required'],
             [['create_at'], 'safe'],
             [['text_short', 'text'], 'string'],
-            [['category_id', 'index_page'], 'integer'],
+            [['category_id', 'index_page', 'popular'], 'integer'],
             [['title', 'img_src_short', 'img_src'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -63,6 +64,7 @@ class Post extends \yii\db\ActiveRecord
             'img_src' => 'Img Src',
             'category_id' => 'Category ID',
             'index_page' => 'Index Page',
+            'popular' => 'Popular',
         ];
     }
 
