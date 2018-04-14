@@ -47,17 +47,21 @@
 <div class="mobile-menu">
     <ul class="menu-hrefs sm sm-mint" id="mobile-menu">
         <?php foreach ($cats as $key => $cat): ?>
-            <?php $subs = $cat->getSubs($cat->id); ?>
+        <?php $subs = $cat->getSubs($cat->id); ?>
             <li <?= $subs ? 'class="li has-ul"' : ''; ?>>
-                <a href=""><?= $cat->name; ?></a>
+                <a href="<?= Url::to(['site/category', 'id' => $cat->id]); ?>"><?= $cat->name; ?></a>
                 <?php if ($subs): ?>
                     <ul>
-                        <?php foreach ($subs as $sub): ?>
-                            <li><a href=""><?= $sub->name; ?></a></li>
+                        <?php $count_sub = 0; foreach ($subs as $key_sub => $sub): ?>
+                            <?php if ($sub->getPostsCount()): $count_sub++;?>
+                                <li><a href="<?= Url::to(['site/category', 'id' => $sub->id]); ?>"><?= $sub->name; ?></a></li>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>
+        <li><a href="<?= Url::to(['/site/about']) ?>">Обо мне</a></li>
+        <li><a href="<?= Url::to(['/site/contact']) ?>">Задать вопрос</a></li>
     </ul>
 </div>

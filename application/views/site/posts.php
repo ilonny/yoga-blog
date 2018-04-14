@@ -1,7 +1,7 @@
 <?php
     use yii\widgets\LinkPager;
     use yii\helpers\Url;
-    use app\Helpers\FileHelper;
+    use app\helpers\FileHelper;
 ?>
 <div class="posts row">
     <?php foreach ($posts as $key => $post): ?>
