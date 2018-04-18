@@ -47,14 +47,13 @@
 <?php endif; ?>
 
 <?php if ($iframes): ?>
-    <?php foreach($iframes as $iframe): ?>
-        <div class="border-block video">
-            <div class="border-block__title">Youtube video</div>
+    <div class="border-block video">
+        <a href="<?= Url::to(['site/video']); ?>" class="border-block__title" style="color:#404040;">Йога-видео</a>
+        <?php foreach($iframes as $iframe): ?>
             <?= $iframe->iframe_code; ?>
-        </div>
-    <?php endforeach;?>
+        <?php endforeach;?>
+    </div>
 <?php endif; ?>
-
 <?php if ($widgets): ?>
     <?php foreach($widgets as $widget): ?>
         <div class="border-block video">

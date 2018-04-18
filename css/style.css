@@ -43,7 +43,9 @@ html, body {
 body {
   overflow: auto;
   font-family: Open Sans, sans-serif;
-  color: #404040; }
+  color: #fff;
+  background: #1f1f1f;
+  padding-top: 110px; }
 
 #container {
   width: 100%;
@@ -392,8 +394,7 @@ body {
         top: 50%;
         left: 50%;
         color: #fff;
-        font-weight: 700;
-        letter-spacing: 2px; }
+        font-weight: normal; }
   .slider-wrap .slick-dots {
     bottom: 10px; }
   .slider-wrap .slick-dots li button:before {
@@ -822,5 +823,8 @@ a.m10 {
     margin-bottom: 15px;
     color: #404040;
     font-size: 22px; }
+
+iframe {
+  max-width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

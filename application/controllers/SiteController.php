@@ -11,6 +11,7 @@ use app\models\Question;
 use app\models\Post;
 use app\models\Menu;
 use app\models\Review;
+use app\models\YoutubeIframe;
 use yii\data\Pagination;
 
 class SiteController extends Controller
@@ -141,6 +142,14 @@ class SiteController extends Controller
                 'message' => 'Возникла ошибка при добавлении комментария, пожалуйста, свяжитесь с администрацией.',
             ]);
         }   
+    }
+
+    public function actionVideo()
+    {
+        $iframes = YoutubeIframe::find()->orderBy('position')->all();
+        return $this->render('video', [
+            'iframes' => $iframes 
+        ]);
     }
 
     // public function actionFillCats()

@@ -16,7 +16,7 @@ $this->title = $post->title;
         </div>
         <div class="post__title"><?= $post->title; ?></div>
         <div class="img-wrap">
-            <img src="/images/post-preview.jpg">
+            <img src="<?= $post->img_src; ?>">
         </div>
         <div class="post-text"><?= $post->text; ?></div>
     </div>

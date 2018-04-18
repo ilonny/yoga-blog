@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $iframe_code
+ * @property int $position
  */
 class YoutubeIframe extends \yii\db\ActiveRecord
 {
@@ -28,6 +29,7 @@ class YoutubeIframe extends \yii\db\ActiveRecord
         return [
             [['iframe_code'], 'required'],
             [['iframe_code'], 'string'],
+            [['position'], 'integer'],
         ];
     }
 
@@ -39,6 +41,7 @@ class YoutubeIframe extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'iframe_code' => 'Iframe Code',
+            'position' => 'Position',
         ];
     }
 }
