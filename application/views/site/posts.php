@@ -31,7 +31,7 @@
                             <a href="<?= $post->getCategoryLink(); ?>" class="post__category"><?= $post->getCategoryName(); ?></a>
                             <div class="post__date"><?= $post->formatPostDate(); ?></div>
                         </div>
-                        <a href="<?= $post->getDetailLink(); ?>" class="post__title">Nam eu nisi non quam ultrices lacinia</a>
+                        <a href="<?= $post->getDetailLink(); ?>" class="post__title"><?= $post->title; ?></a>
                         <div class="post-description"><?= yii\helpers\StringHelper::truncate($post->text_short, 119, '...'); ?></div>
                         <a href="<?= $post->getDetailLink(); ?>" class="more">Читать далее</a>
                     </div>
