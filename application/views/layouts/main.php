@@ -12,7 +12,6 @@ use app\models\UserSocial;
 use app\models\Author;
 use app\models\Post;
 use app\models\Review;
-use app\models\Logo;
 use app\models\YoutubeIframe;
 use app\models\PracticeImage;
 use app\models\WidgetIframe;
@@ -50,8 +49,6 @@ AppAsset::register($this);
             'cats' => $menu_cats,
             'social' => $social,
         ]); ?>
-        <?php $logo = Logo::findOne(1); ?>
-        <?= $this->render('logo.php', ['logo' => $logo]); ?>
         <div class="content container">
             <div class="main-content">
                 <div class="left-side">

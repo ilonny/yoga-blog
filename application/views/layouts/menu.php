@@ -1,9 +1,12 @@
 <?php
     use yii\helpers\Url;
+    use app\models\Logo;
 ?>
+<?php $logo = Logo::findOne(1); ?>
 <header class="menu">
     <div class="content">
         <div class="left">
+            <?= $this->render('logo.php', ['logo' => $logo]); ?>    
             <ul class="menu-hrefs">
                 <?php foreach ($cats as $key => $cat): ?>
                 <?php $subs = $cat->getSubs($cat->id); ?>
