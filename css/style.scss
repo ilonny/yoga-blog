@@ -706,6 +706,9 @@ body {
     padding: 20px;
     position: relative;
     margin-bottom: 15px;
+    &__date{
+      flex-shrink: 0;
+    }
     &-top{
       display: flex;
       justify-content: space-between;
