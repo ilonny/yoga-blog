@@ -75,7 +75,7 @@ $this->title = $post->title;
                     <input type="text" class="form-control" name="email">
                 </div>
                 <div class="col-xs-12"> 
-                    <button class="btn">Отправить</button>
+                    <button class="btn btn-hov">Отправить</button>
                 </div>
                 <div class="col-xs-12">
                     <div class="error-summary"></div>

@@ -48,7 +48,7 @@
 
 <?php if ($iframes): ?>
     <div class="border-block video">
-        <a href="<?= Url::to(['site/video']); ?>" class="border-block__title" style="color:#404040;">Йога-видео</a>
+        <a href="<?= Url::to(['site/video']); ?>" class="border-block__title" style="color:#fff;">Йога-видео</a>
         <?php foreach($iframes as $iframe): ?>
             <?= $iframe->iframe_code; ?>
         <?php endforeach;?>
