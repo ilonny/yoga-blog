@@ -16,6 +16,7 @@ use app\models\YoutubeIframe;
 use app\models\PracticeImage;
 use app\models\WidgetIframe;
 use app\models\Metatags;
+use app\models\Logo;
 
 AppAsset::register($this);
 ?>
@@ -51,7 +52,9 @@ AppAsset::register($this);
         ]); ?>
         <div class="content container">
             <div class="main-content">
+                <?php $logo = Logo::findOne(1); ?>                
                 <div class="left-side">
+                    <?= $this->render('logo.php', ['logo' => $logo]); ?>                    
                     <?= $content ?>
                 </div>
                 <div class="right-side">
@@ -85,6 +88,25 @@ AppAsset::register($this);
         ]); ?>
     </div>
 <?php $this->endBody() ?>
+<div class="bottom-offer">
+    <div class="content">
+        <div class="close">×</div>
+        <div class="sub-modal-form__title popup-with-zoom-anim href" href="#sub-modal">Подпишитесь на рассылку эксклюзивных авторских материалов о йоге (мини-книги, вебинары) и скидок на занятия!</div>
+    </div>
+</div>
+<div class="sub-modal mfp-hide zoom-anim-dialog std-modal" id="sub-modal">
+    <form class="sub-modal-form" id="sub-modal-form">
+        <div class="sub-modal-form__title">Подпишитесь на рассылку эксклюзивных авторских материалов о йоге (мини-книги, вебинары) и скидок на занятия!</div>
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Ваше имя" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="text" name="email" placeholder="E-mail" class="form-control">
+        </div>
+        <button class="btn">Отправить</button>
+        <div class="error-summary"></div>
+    </form>
+</div>
 </body>
 </html>
 <?php $this->endPage() ?>

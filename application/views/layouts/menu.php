@@ -1,12 +1,9 @@
 <?php
     use yii\helpers\Url;
-    use app\models\Logo;
 ?>
-<?php $logo = Logo::findOne(1); ?>
 <header class="menu">
     <div class="content">
         <div class="left">
-            <?= $this->render('logo.php', ['logo' => $logo]); ?>    
             <ul class="menu-hrefs">
                 <?php foreach ($cats as $key => $cat): ?>
                 <?php $subs = $cat->getSubs($cat->id); ?>
@@ -28,6 +25,10 @@
             </ul>
         </div>
         <div class="right">
+            <a class="phone-wrap" href="tel:+79262537911">
+                <i class="fa fa-phone"></i>
+                <p>+7 (926)-253-79-11</p>
+            </a>
             <div class="social-wrap">
                 <?php foreach ($social as $key => $soc): ?>
                     <?php $icon = $soc->getSocialIcon(); ?>
@@ -43,8 +44,8 @@
         <div class="inner"></div>
     </div>
     <a href="" class="phone-link">
-        <div class="fa fa-phone"></div>
-        <p>8 (800) 3221-232</p>
+        <!-- <div class="fa fa-phone"></div> -->
+        <p>Здесь более 400 статей про йогу</p>
     </a>
 </div>
 <div class="mobile-menu">

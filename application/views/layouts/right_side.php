@@ -54,13 +54,13 @@
         <?php endforeach;?>
     </div>
 <?php endif; ?>
-<?php if ($widgets): ?>
+<!-- <?php if ($widgets): ?>
     <?php foreach($widgets as $widget): ?>
         <div class="border-block video">
             <?= $widget->iframe_code; ?>
         </div>
     <?php endforeach; ?>
-<?php endif; ?>
+<?php endif; ?> -->
 <?php if ($popular_posts): ?>
 <div class="border-block discusses">
     <div class="border-block__title">Популярное</div>

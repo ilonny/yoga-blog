@@ -25,7 +25,7 @@ $this->title = $post->title;
             <div class="related__title">Похожие публикации</div>
             <div class="row">
                 <?php foreach ($related_posts as $model): ?>
-                    <div class="col-xs-4 related-block">
+                    <div class="col-xs-12 col-md-4 related-block">
                         <a href="<?= $model->getDetailLink(); ?>" class="img-wrap">
                             <img src="<?= FileHelper::getImageThumb($model->img_src_short, 345, 225); ?>">
                         </a>

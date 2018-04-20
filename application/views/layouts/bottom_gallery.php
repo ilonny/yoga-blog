@@ -2,7 +2,7 @@
 use app\models\InstagramGallery;
 use app\models\UserSocial;
 use app\helpers\FileHelper;
-$models = InstagramGallery::find()->all();
+$models = InstagramGallery::find()->orderBy('id DESC')->all();
 $user_inst = UserSocial::find()->andWhere(['social_id' => 3])->one();
 ?>
 <div class="bottom-gallery">

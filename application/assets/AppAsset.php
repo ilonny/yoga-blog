@@ -34,6 +34,7 @@ class AppAsset extends AssetBundle
         // 'http://api-maps.yandex.ru/2.1/?lang=ru_RU',
         'js/jquery.goldcarrot.js',
         'js/jquery.smartmenus.min.js',
+        'js/jquery.cookie.min.js',
         'js/java.js',
     ];
     public $depends = [
