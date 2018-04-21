@@ -45,6 +45,7 @@ use yii\helpers\Url;
                     <a href=<?= $soc->link; ?> target="_blank"><i class="<?= $icon; ?>"></i></a>
                 <?php endforeach; ?>
             </div>
+            <a class="popup-with-zoom-anim" href="#policy-modal" style="color:#787878;">Политика конфиденциальности</a>
         </div>
         <div class="footer footer-bottom row">
             <div class="col col-xs-12 col-md-6">Copyright © All rights reserved.</div>

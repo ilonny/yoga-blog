@@ -5,7 +5,7 @@
 ?>
 <div class="posts row">
     <?php foreach ($posts as $key => $post): ?>
-        <?php if ((++$key)%3): ?>
+        <?php if ((++$key)%3 && ($key != 10)): ?>
             <div class="col-xs-12 col-md-6">
                 <div class="post">
                     <div class="post-top">

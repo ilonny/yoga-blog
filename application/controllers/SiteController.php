@@ -22,12 +22,12 @@ class SiteController extends Controller
         $countPosts = clone $query;
         $pages = new Pagination([
             'totalCount' => $countPosts->count(),
-            'pageSize' => 9,
+            'pageSize' => 10,
         ]);
         $posts = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
-        $slides = Slider::find()->all();
+        $slides = Slider::find()->orderBy('link')->all();
         return $this->render('index', [
             'slides' => $slides,
             'posts' => $posts,
@@ -49,7 +49,7 @@ class SiteController extends Controller
         $countPosts = clone $query;
         $pages = new Pagination([
             'totalCount' => $countPosts->count(),
-            'pageSize' => 9,
+            'pageSize' => 10,
         ]);
         $posts = $query->offset($pages->offset)
             ->limit($pages->limit)
