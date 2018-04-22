@@ -33,9 +33,16 @@ use yii\helpers\Url;
                     <a href="">Link</a>
                 </div>
             </div> -->
-            <div class="footer-top-col col-xs-12 col-md-offset-3 col-md-3">
+            <div class="footer-top-col col-xs-12 col-md-offset-1 col-md-5">
                 <div class="footer-top-col__title">About theme</div>
                 <div class="footer-top-col-hrefs">Blog way is minimal blog theme. This responsive theme is best to use for personal,  travel, food blog as well as informative websites. It comes with options to change the color of entire site, author profile widget, social links and more.</div>                    
+                <form class="site-search-wrap" action="/site/search" method="POST">
+                    <label>Писк по сайту</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="query" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="footer-social row">

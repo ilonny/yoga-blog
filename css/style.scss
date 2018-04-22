@@ -1041,3 +1041,10 @@ iframe{
     opacity: 1;
   }
 }
+.input-group{
+  &-addon{
+    background: #2b2b2b;
+    color: #fff;
+    cursor: pointer;
+  }
+}

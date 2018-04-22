@@ -16,6 +16,9 @@ use yii\data\Pagination;
 
 class SiteController extends Controller
 {
+    
+    public $enableCsrfValidation = false;
+
     public function actionIndex()
     {
         $query = Post::find()->orderBy('create_at DESC');
@@ -151,6 +154,29 @@ class SiteController extends Controller
             'iframes' => $iframes 
         ]);
     }
+
+    public function actionSearch()
+    {   
+        $post = Yii::$app->request->post('query');
+        
+        $query = Post::find()
+            ->orWhere(['like', 'title', $post])
+            ->orWhere(['like', 'text', $post])
+            ->orderBy('create_at DESC');
+        $countPosts = clone $query;
+        $pages = new Pagination([
+            'totalCount' => $countPosts->count(),
+            'pageSize' => 10,
+        ]);
+        $posts = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('search', [
+            'posts' => $posts,
+            'pages' => $pages,
+        ]);
+    }
+
 
     // public function actionFillCats()
     // {
