@@ -289,7 +289,7 @@ class DynamicModel extends \yii\base\DynamicModel
      */
     public function search($params)
     {
-        $query = ActiveQuery::create((new Query())->from($this->table->name));
+        $query = ActiveQuery::create((new Query())->from($this->table->name)->orderBy('id DESC'));
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => ['attributes' => \Yii::$app->dbFrontEnd->getTableSchema($this->table->name)->columnNames],

@@ -45,7 +45,7 @@
     </div>
     <a href="" class="phone-link">
         <!-- <div class="fa fa-phone"></div> -->
-        <p>Здесь более 400 статей про йогу</p>
+        <p>Всё о йоге для начинающих</p>
     </a>
 </div>
 <div class="mobile-menu">

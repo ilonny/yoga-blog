@@ -95,7 +95,7 @@ Ya.share2('my-share', {
         url: '<?= Url::home(true).Url::to(['site/detailview', id=> $post->id]); ?>',
         title: '<?= $post->title;  ?>',
         description: '<?= $post->text_short; ?>',
-        image: '<?= $post->img_src; ?>'
+        image: 'http://yogalex.ru<?= $post->img_src; ?>'
     }
 });
 </script>
